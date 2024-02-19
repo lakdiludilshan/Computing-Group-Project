@@ -5,6 +5,9 @@ import {
 import App from "../App";
 import Home from "../home/home";
 import Shop from "../shop/shop";
+import About from "../components/About";
+import Blog from "../components/Blog";
+import SingleBook from "../components/SingleBook";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +21,19 @@ const router = createBrowserRouter([
             {
                 path: "/shop",
                 element: <Shop/>,
-            }
+            },
+            {
+                path: "/about",
+                element: <About/>,
+            },
+            {
+                path: "/blog",
+                element: <Blog/>,
+            },
+            {
+                path: "/singlebook",
+                element: <SingleBook/>,
+            },
         ]
     },
 ]);
