@@ -86,6 +86,13 @@ async function run() {
       res.send(result);
     });
 
+    // to get single book data
+    app.get('/book/:id', async (req, res) => {
+      const id = req.params.id;
+      const result = await bookcollection.findOne({_id: new ObjectId(id)});
+      res.send(result);
+    });
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
