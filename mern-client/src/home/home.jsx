@@ -2,7 +2,7 @@ import React from 'react'
 import Banner from "../components/Banner";
 import BestSellerBooks from "./BestSellerBooks";
 import FavouriteBook from "./FavouriteBook";
-import BookCards from '../components/BookCards';
+import PromoBanner from './PromoBanner';
 
 const home = () => {
   return (
@@ -10,6 +10,7 @@ const home = () => {
       <Banner/>
       <BestSellerBooks/>
       <FavouriteBook/>
+      <PromoBanner/>
     </div>
   )
 }
