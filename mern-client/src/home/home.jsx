@@ -4,6 +4,8 @@ import BestSellerBooks from "./BestSellerBooks";
 import FavouriteBook from "./FavouriteBook";
 import PromoBanner from './PromoBanner';
 import OtherBooks from './OtherBooks';
+import Review from './Review';
+import Footer from '../components/Footer'
 
 const home = () => {
   return (
@@ -13,6 +15,8 @@ const home = () => {
       <FavouriteBook/>
       <PromoBanner/>
       <OtherBooks/>
+      <Review/>
+      <Footer/>
     </div>
   )
 }
