@@ -1,41 +1,60 @@
 import React from 'react'
+import '../css/footer.css'
+import fb from '../assets/fb.png'
+import linkedin from '../assets/linkedin.png'
+import twitter from '../assets/twitter.png'
 
-function Footer() {
+const Footer = () => {
   return (
-    <div>
-      <footer class="bg-gray-900 text-white py-12">
-  <div class="container mx-auto flex justify-between items-center">
-    <div class="flex-shrink-0">
-      <span class="font-bold text-xl">Your Logo</span>
-    </div>
-    <div class="flex space-x-4">
-      <a href="#" class="hover:text-gray-500">Home</a>
-      <a href="#" class="hover:text-gray-500">About</a>
-      <a href="#" class="hover:text-gray-500">Services</a>
-      <a href="#" class="hover:text-gray-500">Contact</a>
-    </div>
-    <div class="flex-shrink-0">
-      <div class="flex space-x-4">
-        <a href="#" class="text-white hover:text-gray-500">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            {/* <!-- Your social media icon, e.g., Facebook icon --> */}
-          </svg>
-        </a>
-        <a href="#" class="text-white hover:text-gray-500">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            {/* <!-- Your social media icon, e.g., Twitter icon --> */}
-          </svg>
-        </a>
-        <a href="#" class="text-white hover:text-gray-500">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            {/* <!-- Your social media icon, e.g., Instagram icon --> */}
-          </svg>
-        </a>
+    <div className='footer'>
+      <div className='sb_footer section_padding'>
+        <div className='sb_footer-links'>
+          <div className='sb_footer-links-div'>
+            <h4>For business</h4>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+          </div>
+          <div className='sb_footer-links-div'>
+            <h4>For business</h4>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+          </div>
+          <div className='sb_footer-links-div'>
+            <h4>For business</h4>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+          </div>
+          <div className='sb_footer-links-div'>
+            <h4>For business</h4>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+            <a href="#"><p>Employer</p></a>
+          </div>
+          <div className='socialmedia'>
+            <h4 className=''>Follow Us On</h4>
+            <p><img src={fb} alt="" className='logo'/></p>
+            <p><img src={twitter} alt="" className='logo'/></p>
+            <p><img src={linkedin} alt="" className='logo'/></p>
+          </div>
+        </div>
+        
+          <hr></hr>
+        <div className='sb_footer-below'>
+          <div className='sb_footer-copyright'>
+            <a href="#"><div><p>Terms & conditions</p></div></a>
+            <a href="#"><div><p>Privacy</p></div></a>
+            <a href="#"><div><p>Security</p></div></a>
+            <a href="#"><div><p>Cookie Declaration</p></div></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</footer>
-
     </div>
   )
 }

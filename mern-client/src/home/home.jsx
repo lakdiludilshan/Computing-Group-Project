@@ -16,7 +16,6 @@ const home = () => {
       <PromoBanner/>
       <OtherBooks/>
       <Review/>
-      <Footer/>
     </div>
   )
 }

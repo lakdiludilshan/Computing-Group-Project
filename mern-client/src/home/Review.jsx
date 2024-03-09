@@ -48,8 +48,8 @@ const Review = () => {
                     <div className='space-y-6'>
                         {/* texts */}
                         <div className='mt-7'>
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                            <p className='text-sm'> CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Bon Huster</h5>
+                            <p className='text-sm'> CEO, Alabama Constructions</p>
                             <br />
                             <p className='mb-5'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel voluptatibus libero eaque illo voluptate ducimus commodi, eos, quam repellendus, officiis esse cum alias nemo blanditiis dolore quas officia molestiae accusantium!</p>
                             {/* <Avatar
@@ -73,8 +73,8 @@ const Review = () => {
                     <div className='space-y-6'>
                         {/* texts */}
                         <div className='mt-7'>
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                            <p className='text-sm'> CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Jack Sting</h5>
+                            <p className='text-sm'> Engineer, England Airways</p>
                             <br />
                             <p className='mb-5'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel voluptatibus libero eaque illo voluptate ducimus commodi, eos, quam repellendus, officiis esse cum alias nemo blanditiis dolore quas officia molestiae accusantium!</p>
                             {/* <Avatar
@@ -123,8 +123,8 @@ const Review = () => {
                     <div className='space-y-6'>
                         {/* texts */}
                         <div className='mt-7'>
-                            <h5 className='text-lg font-medium'>Mark Ping</h5>
-                            <p className='text-sm'> CEO, ABC Company</p>
+                            <h5 className='text-lg font-medium'>Bon Huster</h5>
+                            <p className='text-sm'> CEO, Alabama Constructions</p>
                             <br />
                             <p className='mb-5'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel voluptatibus libero eaque illo voluptate ducimus commodi, eos, quam repellendus, officiis esse cum alias nemo blanditiis dolore quas officia molestiae accusantium!</p>
                             {/* <Avatar
