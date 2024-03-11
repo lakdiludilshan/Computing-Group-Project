@@ -1,7 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// vite.config.js
+import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  // ... other configurations
+  resolve: {
+    alias: {
+      '@mui/material': 'path-to-material-ui-package',
+      '@mui/icons-material': 'path-to-material-ui-icons-package',
+    },
+  },
+});
