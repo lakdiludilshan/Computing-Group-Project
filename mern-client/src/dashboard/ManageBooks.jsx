@@ -5,10 +5,14 @@ import { Link } from 'react-router-dom'
 const ManageBooks = () => {
   const [books, setAllBooks] = useState([])
   useEffect(() => {
+    fetchBooks();
+  }, [books])
+
+  const fetchBooks = async () => {
     fetch('http://localhost:5000/books')
       .then(res => res.json())
       .then(data => setAllBooks(data))
-  }, [])
+  }
 
   //delete book
   const handleDelete = (id) => {
@@ -20,6 +24,7 @@ const ManageBooks = () => {
     .then(data => {
       alert("Book Deleted Successfully!!")
       // setAllBooks(data);
+      fetchBooks();
     })
   }
 
