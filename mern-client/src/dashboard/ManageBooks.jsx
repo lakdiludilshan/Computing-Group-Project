@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const ManageBooks = () => {
   const [books, setAllBooks] = useState([])
@@ -8,6 +9,20 @@ const ManageBooks = () => {
       .then(res => res.json())
       .then(data => setAllBooks(data))
   }, [])
+
+  //delete book
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/delete/${id}`, {
+      method: 'DELETE',
+    })
+    .then(res => res.json()) 
+    .then(data => {
+      alert("Book Deleted Successfully!!")
+      // setAllBooks(data);
+    })
+  }
+
   return (
     <div className='px-4 my-12'>
       <h2 className='mb-8 text-3xl font-bold'>Manage Book</h2>
@@ -26,17 +41,18 @@ const ManageBooks = () => {
         {
           books.map(book => {
             return (
-              <tbody>
+              <tbody key={book._id}>
                 <tr>
                   <td className='border px-2 py-2'>{book.bookTitle}</td>
                   <td className='border px-2 py-2'>{book.authorName}</td>
                   <td className='border px-2 py-2'>{book.category}</td>
-                  <td className='border px-2 py-2'>{book.bookPrice}</td>
+                  <td className='border px-2 py-2'>$590</td>
                   <td className='border px-2 py-2'>
+                    <Link to={`/admin/dashboard/edit-book/${book._id}`}>
                     <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded px-2'>
                       Edit
-                    </button>
-                    <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded px-2'>
+                    </button> </Link>
+                    <button onClick={() => handleDelete(book._id)} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded px-2'>
                       Delete
                     </button>
                   </td>
@@ -49,6 +65,7 @@ const ManageBooks = () => {
 
     </div>
   )
+
 }
 
 export default ManageBooks
