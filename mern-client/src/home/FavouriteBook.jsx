@@ -15,6 +15,8 @@ const FavouriteBook = () => {
             voluptates, quod, voluptate quidem, quos quas quae voluptatum quibusdam doloribus quia nemo autem a
             laboriosam.</p>
             {/* stats */}
+{/* comment */}
+
             <div className='flex flex-col sm:flex-row justify-between gap-6 md:w-3/4 my-14'>
                 <div>
                     <h3 className='text-3xl font-bold'>800+</h3>
