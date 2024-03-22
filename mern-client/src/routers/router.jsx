@@ -14,6 +14,8 @@ import Dashboard from "../dashboard/Dashboard";
 import UploadBook from "../dashboard/UploadBook";
 import ManageBooks from "../dashboard/ManageBooks";
 import EditBook from "../dashboard/EditBook";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
             {
                 path: "/blog",
                 element: <Blog/>,
+            },
+            {
+                path: "/signIn",
+                element: <SignIn/>,
+            },
+            {
+                path: "/signUp",
+                element: <SignUp/>,
             },
             {
                 path: "/book/:id",
@@ -63,7 +73,7 @@ const router = createBrowserRouter([
                 path: "/admin/dashboard/edit-book/:id",
                 element: <EditBook/>,
                 loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
-            }
+            },
         ]
     }
 ]);

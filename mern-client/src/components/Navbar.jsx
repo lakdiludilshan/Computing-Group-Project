@@ -1,20 +1,38 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link,useNavigate } from 'react-router-dom';
+import { useState,useEffcet } from 'react';
+
 
 // react icons
 import { FaBarsStaggered, FaBlog, FaXmark } from "react-icons/fa6";
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isSticky, setIsSticky] = useState(false)
+
+ 
 
     // toggle menu
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
 
+        // Logout function
+        const handleLogout = () => {
+            localStorage.removeItem('jwt'); // Remove token from local storage
+            setIsAuthenticated(false); // Update authentication state
+            navigate("/", { replace: true });
+            window.location.reload(); // Reload the page
+        };
+    
+
     useEffect(() => {
+        const token = localStorage.getItem("jwt");
+        if(token){
+            setIsAuthenticated(true)
+        }
         const handleScroll = () => {
             if (window.scrollY > 100) {
                 setIsSticky(true)
@@ -36,6 +54,7 @@ const Navbar = () => {
         {link: "About", path: "/about"},
         {link: "Sell Your Book", path: "/admin/dashboard"},
         {link: "Blog", path: "/blog"},
+        { link: isAuthenticated ? 'Logout' : 'SignIn', path: isAuthenticated ? '/' : '/signIn', onClick: isAuthenticated ? handleLogout : undefined }
     ]
   return (
     <header className='w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300 z-10'>
