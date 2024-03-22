@@ -4,7 +4,7 @@ const cors = require('cors')
 require("dotenv").config();
 
 
-const userRouter = require("./controller/UserController");
+const userRouter = require("./routes/UserRoutes");
 
 // Middleware
 app.use(cors());
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.puy8gfz.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.puy8gfz.mongodb.net/BookInventary`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -28,7 +28,9 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
+  connectTimeoutMS: 20000,
+  socketTimeoutMS: 20000
 });
 
 async function run() {
@@ -107,8 +109,7 @@ async function run() {
 run().catch(console.dir);
 
 
-// user routes
-app.use('/users', userRouter);
+app.use(userRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`);

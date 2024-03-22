@@ -4,18 +4,14 @@ const bcrypt = require("bcrypt");
 const createUser = async (request, response) => {
   const { username, email, password } = request.body;
   try {
-    const existUser = await UserModel.findOne({ email: email });
-    if (existUser) {
-      return response.status(400).json({
-        message: "User already exist",
-      });
-    } else {
+    
+
       const salt = await bcrypt.genSalt(10);
       const hashedPassword =await bcrypt.hash(password, salt);
       if (hashedPassword) {
         const hashedUser = await UserModel.create({
           username,
-          password,
+          password:hashedPassword,
           email,
         });
         if (hashedUser) {
@@ -33,7 +29,7 @@ const createUser = async (request, response) => {
           message: "password not hashed",
         });
       }
-    }
+    
   } catch (error) {
     return response.status(500).json({
       message: error.message,

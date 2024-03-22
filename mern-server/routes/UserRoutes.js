@@ -5,4 +5,4 @@ const router = express.Router();
 
 router.post("/api/user/signin",UserController.createUser);
 
-module.exports = router;
+module.exports = router

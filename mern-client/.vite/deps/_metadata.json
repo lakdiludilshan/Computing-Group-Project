@@ -1,0 +1,73 @@
+{
+  "hash": "16bebf4e",
+  "configHash": "286ce374",
+  "lockfileHash": "11a9955e",
+  "browserHash": "9bf290e7",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "90024996",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "3d9f7c55",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "369e1cb7",
+      "needsInterop": false
+    },
+    "react-icons/fa6": {
+      "src": "../../node_modules/react-icons/fa6/index.mjs",
+      "file": "react-icons_fa6.js",
+      "fileHash": "ca34f077",
+      "needsInterop": false
+    },
+    "swiper/react": {
+      "src": "../../node_modules/swiper/swiper-react.mjs",
+      "file": "swiper_react.js",
+      "fileHash": "48268d8c",
+      "needsInterop": false
+    },
+    "swiper/modules": {
+      "src": "../../node_modules/swiper/modules/index.mjs",
+      "file": "swiper_modules.js",
+      "fileHash": "27ed0e69",
+      "needsInterop": false
+    },
+    "bootstrap/js/dist/dropdown": {
+      "src": "../../node_modules/bootstrap/js/dist/dropdown.js",
+      "file": "bootstrap_js_dist_dropdown.js",
+      "fileHash": "adc54122",
+      "needsInterop": true
+    },
+    "bootstrap/js/dist/collapse": {
+      "src": "../../node_modules/bootstrap/js/dist/collapse.js",
+      "file": "bootstrap_js_dist_collapse.js",
+      "fileHash": "66a6b99f",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-FBRNPY62": {
+      "file": "chunk-FBRNPY62.js"
+    },
+    "chunk-UM3JHGVO": {
+      "file": "chunk-UM3JHGVO.js"
+    },
+    "chunk-2JSOXIYZ": {
+      "file": "chunk-2JSOXIYZ.js"
+    },
+    "chunk-MBC3JGNJ": {
+      "file": "chunk-MBC3JGNJ.js"
+    },
+    "chunk-CEQRFMJQ": {
+      "file": "chunk-CEQRFMJQ.js"
+    }
+  }
+}
