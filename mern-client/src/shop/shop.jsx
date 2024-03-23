@@ -30,9 +30,16 @@ export default function Shop() {
   //         <Spinner aria-label="Center-aligned spinner example" />
   //     </div>
   // }
-  useEffect(()=>{
+  const token = localStorage.getItem('jwt');
 
-  })
+  const tokenVerify = () => {
+    if (token) {
+      alert('Book added');
+    } else {
+      navigate('/signIn');
+    }
+  };
+
 
   return (
     <div className='my-28 px-4 lg:px-24'>
@@ -53,7 +60,7 @@ export default function Shop() {
                 </p>
               </p>
 
-              <button className='px-4 py-2 bg-blue-600 text-white rounded'>Buy Now</button>
+              <button className='px-4 py-2 bg-blue-600 text-white rounded' onClick={tokenVerify}>Buy Now</button>
               </div>
             ))
           } 
