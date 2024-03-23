@@ -1,24 +1,30 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import { Link,useNavigate } from 'react-router-dom'
 
 const ManageBooks = () => {
+  const navigate = useNavigate()
   const [books, setAllBooks] = useState([])
   useEffect(() => {
     fetchBooks();
   }, [books])
 
   const fetchBooks = async () => {
-    fetch('http://localhost:5000/books')
+    fetch('http://localhost:5000/book/allBooks')
       .then(res => res.json())
       .then(data => setAllBooks(data))
   }
 
   //delete book
-  const handleDelete = (id) => {
+  const handleDelete = async(id) => {
     console.log(id);
-    fetch(`http://localhost:5000/delete/${id}`, {
+    await fetch(`http://localhost:5000/delete/${id}`, {
       method: 'DELETE',
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+      }
     })
     .then(res => res.json()) 
     .then(data => {
@@ -27,6 +33,17 @@ const ManageBooks = () => {
       fetchBooks();
     })
   }
+
+  useEffect(()=>{
+    const token = localStorage.getItem("jwt");
+    if(!token){
+      toast.error("You need to sign in for access this page",{
+        duration:3000,
+        position:"top-right"
+      })
+      navigate("/signIn")
+    }
+  })
 
   return (
     <div className='px-4 my-12'>
@@ -44,7 +61,7 @@ const ManageBooks = () => {
           </tr>
         </thead>
         {
-          books.map(book => {
+          books.books?.map(book => {
             return (
               <tbody key={book._id}>
                 <tr>
@@ -54,10 +71,10 @@ const ManageBooks = () => {
                   <td className='border px-2 py-2'>$590</td>
                   <td className='border px-2 py-2'>
                     <Link to={`/admin/dashboard/edit-book/${book._id}`}>
-                    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded px-2'>
+                    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  rounded px-2'>
                       Edit
                     </button> </Link>
-                    <button onClick={() => handleDelete(book._id)} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded px-2'>
+                    <button onClick={() => handleDelete(book._id)} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2  rounded px-2'>
                       Delete
                     </button>
                   </td>

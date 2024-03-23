@@ -16,6 +16,7 @@ import ManageBooks from "../dashboard/ManageBooks";
 import EditBook from "../dashboard/EditBook";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import Users from "../pages/Users";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
                 path: "/signUp",
                 element: <SignUp/>,
             },
+            
             {
                 path: "/book/:id",
                 element: <SingleBook/>,
@@ -68,6 +70,10 @@ const router = createBrowserRouter([
             {
                 path: "/admin/dashboard/manage",
                 element: <ManageBooks/>
+            },
+            {
+                path: "/admin/dashboard/users",
+                element: <Users/>
             },
             {
                 path: "/admin/dashboard/edit-book/:id",

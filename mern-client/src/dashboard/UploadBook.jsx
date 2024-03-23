@@ -1,7 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const UploadBook = () => {
+
+  const navigate = useNavigate();
+
+  const [uploadData,setUploadData] = useState({})
   const bookCategories = [
     "Action and Adventure",
     "Anthology",
@@ -31,59 +37,52 @@ const UploadBook = () => {
     "Western",
   ];
 
-  const [selectedBookCategory, setSelectedBookCategory] =
-    useState("bookCategories[0]");
+ const changevalue = (e)=>{
+  setUploadData({
+    ...uploadData,
+    [e.target.name]:e.target.value
+  })
+ }
 
-  const handleChangeSelectedValue = (event) => {
-    console.log(event.target.value);
-    setSelectedBookCategory(event.target.value);
-  };
+ const token = localStorage.getItem("jwt")
 
-  //handle book submition
-  const handleBookSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-
-    const bookTitle = form.bookTitle.value;
-    const authorName = form.authorName.value;
-    const imageUrl = form.imageUrl.value;
-    const category = form.category.value;
-    const bookDescription = form.bookDescription.value;
-    const bookPdfUrl = form.bookPdfUrl.value;
-
-    const bookObj = {
-      bookTitle,
-      authorName,
-      imageUrl,
-      category,
-      bookDescription,
-      bookPdfUrl,
-    };
-
-    console.log(bookObj);
-
-    //send data to the db
-    fetch("http://localhost:5000/addbook", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
+ const handleData = async(e)=>{
+  e.preventDefault();
+  try {
+    const response = await fetch("http://localhost:5000/book/addBook",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
       },
-      body: JSON.stringify(bookObj),
+      body:JSON.stringify(uploadData)
     })
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log(data)
-        alert("Book Uploaded Successfully!!");
-        form.reset();
-      });
-  };
+
+    const data = await response.json();
+    console.log(data)
+      toast.success("Book added success vist shop page",{
+        duration:3000,
+        position:"top-right"
+      })
+      setUploadData(data);
+    
+
+  } catch (error) {
+    console.log(error)
+  }
+ }
+
+ useEffect(()=>{
+  if(!token){
+    navigate("/signIn")
+  } },[])
 
   return (
     <div className="px-4 my-5 w-full">
       <h2 className="mb-4 text-3xl font-bold">Upload a Book</h2>
 
       <form
-        onSubmit={handleBookSubmit}
+        onSubmit={handleData}
         className="flex w-full gap-2 flex-col"
       >
         <div>
@@ -95,7 +94,7 @@ const UploadBook = () => {
               <input
                 type="text"
                 id="bookTitle"
-                name="bookTitle"
+                name="bookTitle"  onChange={changevalue}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Enter Book Title"
               />
@@ -108,7 +107,7 @@ const UploadBook = () => {
               <input
                 type="text"
                 id="authorName"
-                name="authorName"
+                name="authorName"  onChange={changevalue}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Enter Author Name"
               />
@@ -123,7 +122,7 @@ const UploadBook = () => {
               <input
                 type="text"
                 id="imageUrl"
-                name="imageUrl"
+                name="imageUrl"  onChange={changevalue}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Enter Book Image Url"
               />
@@ -135,9 +134,7 @@ const UploadBook = () => {
               </div>
               <select
                 name="category"
-                id="inputState"
-                value={selectedBookCategory}
-                onChange={handleChangeSelectedValue}
+                id="inputState" onChange={changevalue}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
                 {bookCategories.map((option) => (
@@ -157,7 +154,7 @@ const UploadBook = () => {
           <textarea
             type="text"
             id="bookDescription"
-            name="bookDescription"
+            name="bookDescription"  onChange={changevalue}
             className="w-full p-3 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
             placeholder="Write your Book Description"
             rows={4}
@@ -171,7 +168,7 @@ const UploadBook = () => {
           <input
             type="text"
             id="bookPdfUrl"
-            name="bookPdfUrl"
+            name="bookPdfUrl"  onChange={changevalue}
             className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
             placeholder="Enter Book PDF Url"
           />

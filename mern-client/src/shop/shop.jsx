@@ -1,18 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState} from 'react'
+import {useNavigate} from "react-router-dom"
 // import { Card, Spinner } from 'flowbite-react';
 //import { AuthContext } from '../../contexts/AuthProvider';
 
 export default function Shop() {
   //const {loading } = useContext(AuthContext);
-  const [books, setBooks] = useState([]);
+
+  const navigate = useNavigate()
+  const [allBooks, setAllBooks] = useState([]);
 // fetching data
   useEffect(() =>{
-    fetch('http://localhost:5000/books')
+
+
+    fetch('http://localhost:5000/book/allBooks',{
+      headers:{
+        "Content-Type":"application/json",
+      }
+    })
     .then(res => res.json())
-    .then(data => setBooks(data))
+    .then(data => setAllBooks(data))
   }, []);
 
-  console.log(books);
+  console.log(allBooks);
+  console.log(allBooks.books)
 
     // loader
   //   if (loading) {
@@ -20,14 +30,16 @@ export default function Shop() {
   //         <Spinner aria-label="Center-aligned spinner example" />
   //     </div>
   // }
+  useEffect(()=>{
 
+  })
 
   return (
     <div className='my-28 px-4 lg:px-24'>
       <h2 className='text-3xl font-bold text-center mb-16 z-40'>All Books are Available Here</h2>
         <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8'>
-          {
-            books?.map(book => (
+         {
+            allBooks && allBooks.books?.map(book => (
               <div key={book._id}>
               <img src={book.imageUrl} alt="" className='h-96' />
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
@@ -44,7 +56,7 @@ export default function Shop() {
               <button className='px-4 py-2 bg-blue-600 text-white rounded'>Buy Now</button>
               </div>
             ))
-          }
+          } 
         </div>
     </div>
   )

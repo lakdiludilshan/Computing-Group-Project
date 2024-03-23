@@ -1,6 +1,22 @@
 import React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast"
 
 const Dashboard = () => {
+const navigate = useNavigate()
+
+  useEffect(()=>{
+    const token = localStorage.getItem("jwt");
+    if(!token){
+      toast.error("You need to sign in for access this page",{
+        duration:3000,
+        position:"top-right"
+      })
+      navigate("/signIn")
+    }
+  })
+  
   return (
     <>
      <div className="bg-white">

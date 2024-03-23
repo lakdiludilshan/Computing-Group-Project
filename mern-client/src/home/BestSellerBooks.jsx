@@ -5,11 +5,11 @@ const BestSellerBooks = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/books").then(res => res.json()).then(data => {
+        fetch("http://localhost:5000/book/allBooks").then(res => res.json()).then(data => {
           console.log("books fetched")
           console.log(data)
           // reverse the array to get the latest books
-          data.reverse(); 
+          data.books.reverse(); 
         setBooks(data)
     }
         )

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import { useLoaderData, useParams } from 'react-router-dom'
+import React, { useState,useEffect } from 'react'
+import toast from 'react-hot-toast';
+import { useLoaderData, useParams ,useNavigate} from 'react-router-dom'
 
 const EditBook = () => {
+  const navigate = useNavigate()
   const {id} = useParams();
   const {bookTitle, authorName, imageUrl, category, bookDescription, bookPdfUrl} = useLoaderData();
   const bookCategories = [
@@ -68,14 +70,25 @@ const EditBook = () => {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        "Authorization":`Bearer ${token}`
       },
       body: JSON.stringify(updateBookObj),
     }).then((res) => res.json())
       .then((data) => {
-        alert('Book Updated Successfully!!');
+        toast.success("Book updated",{
+          duration:3000,
+          position:"top-right"
+        })
       });
 
   };
+
+  useEffect(()=>{
+    const token = localStorage.getItem("jwt");
+    if(!token){
+      navigate("/signIn")
+    }
+  })
 
   return (
     <div className="px-4 my-5 w-full">

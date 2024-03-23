@@ -36,6 +36,7 @@ const SignIn = () => {
                         position:'top-right'
                     })
                     navigate("/")
+                    location.reload();
                 }
             }
         }catch(error){

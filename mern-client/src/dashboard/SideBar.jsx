@@ -4,12 +4,13 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/js/dist/dropdown'
 import 'bootstrap/js/dist/collapse'
 import '../css/sidebar.css'
+import { Link } from 'react-router-dom';
 
 function SideBar() {
     return (
-        <div className='w-full fixed'>
+        <div className='w-full '>
             <div className='row'>
-                <div className='col-auto col-sm-2 bg-dark d-flex flex-column justify-content-between min-vh-100' style={{ width: '210px' }}>
+                <div className='col-auto col-sm-2 bg-dark d-flex flex-column justify-content-between min-vh-100 fixed' style={{ width: '210px' }}>
                     <div className='mt-2'>
                         <a className='text-decoration-none ms-4 d-flex align-items-center text-white d-none d-sm-inline' role='button'>
                             <span className='f5-4'>Admin Dashboard</span>
@@ -29,6 +30,12 @@ function SideBar() {
                                 </a>
                             </li>
                             <li class="nav-item my-1 py-2 py-sm-0">
+                                <a href="/" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-book'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Home</span>
+                                </a>
+                            </li>
+                            <li class="nav-item my-1 py-2 py-sm-0">
                                  <a href="/admin/dashboard/manage" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-files'></i>
                                     <span className='ms-2 d-none d-sm-inline'>Manage Books</span>
@@ -36,10 +43,10 @@ function SideBar() {
                             </li>
 
                             <li class="nav-item my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                <Link to={"users"} href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-people'></i>
                                     <span className='ms-2 d-none d-sm-inline'>Users</span>
-                                </a>
+                                </Link>
                             </li>
 
                             <li class="nav-item my-1 py-2 py-sm-0">
