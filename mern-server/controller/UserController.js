@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 
+
 const signUp= async(request,response)=>{
     const {username,email,password} = request.body;
     try {
@@ -49,7 +50,7 @@ const signIn = async(request,response)=>{
         if(findUser){
             const verifyUser = await bcrypt.compare(password,findUser.password);
             if(verifyUser){
-                const token = await jwt.sign({email:findUser.email,password:findUser.password},process.env.SECRET_KEY,{
+                const token = await jwt.sign({id:findUser._id,email:findUser.email,password:findUser.password},process.env.SECRET_KEY,{
                     expiresIn:"24h"
                 })
 
@@ -72,4 +73,50 @@ const signIn = async(request,response)=>{
     }
 }
 
-module.exports = {signUp,signIn};
+const getAllUsers = async(request,response)=>{
+    try {
+        const findAll = await UserModel.find({}).select("--password");
+        if(findAll){
+            console.log(findAll)
+            return response.status(200).json({
+                message:"all users found in db",
+                users:findAll
+            })
+        }else{
+            return response.status(404).json({
+                message:"no users in db"
+            })
+        }
+    } catch (error) {
+        return response.status(404).json({
+            message:"error occur",
+            error:error.message
+        })
+    }
+}
+
+const updateUser  = async(request,response)=>{
+    const {id} = request.params;
+
+    try {
+        const updateUser = await UserModel.findByIdAndUpdate(id,request.body);
+        if(updateUser){
+            return response.status(200).json({
+                message:"Users updated successafully",
+                user:updateUser
+            })
+        }else{
+            return response.status(500).json({
+                message:"user not update"
+            })
+        }
+    } catch (error) {
+        console.log(error.message)
+        return response.status(404).json({
+            message:"error occur",
+            error:error.message
+        })
+    }
+}
+
+module.exports = {signUp,signIn,getAllUsers,updateUser};
