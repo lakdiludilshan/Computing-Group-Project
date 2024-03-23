@@ -1,11 +1,15 @@
-import React, { useState,useEffect } from 'react'
-import toast from 'react-hot-toast';
-import { useLoaderData, useParams ,useNavigate} from 'react-router-dom'
+import React from "react";
+import { useState,useEffect } from "react";
+import { Link,useNavigate,useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
-const EditBook = () => {
-  const navigate = useNavigate()
-  const {id} = useParams();
-  const {bookTitle, authorName, imageUrl, category, bookDescription, bookPdfUrl} = useLoaderData();
+const UploadBook = () => {
+const {id} = useParams()
+console.log(id)
+
+  const navigate = useNavigate();
+
+  const [uploadData,setUploadData] = useState({})
   const bookCategories = [
     "Action and Adventure",
     "Anthology",
@@ -35,67 +39,70 @@ const EditBook = () => {
     "Western",
   ];
 
-  const [selectedBookCategory, setSelectedBookCategory] =
-    useState("bookCategories[0]");
+ const changevalue = (e)=>{
+  setUploadData({
+    ...uploadData,
+    [e.target.name]:e.target.value
+  })
+ }
 
-  const handleChangeSelectedValue = (event) => {
-    console.log(event.target.value);
-    setSelectedBookCategory(event.target.value);
-  };
+ const token = localStorage.getItem("jwt")
 
-  //handle book submition
-  const handleUpdate = (event) => {
-    event.preventDefault();
-    const form = event.target;
-
-    const bookTitle = form.bookTitle.value;
-    const authorName = form.authorName.value;
-    const imageUrl = form.imageUrl.value;
-    const category = form.category.value;
-    const bookDescription = form.bookDescription.value;
-    const bookPdfUrl = form.bookPdfUrl.value;
-
-    const updateBookObj = {
-      bookTitle,
-      authorName,
-      imageUrl,
-      category,
-      bookDescription,
-      bookPdfUrl,
-    };
-
-    // console.log(bookObj);
-    // Update book data
-    fetch(`http://localhost:5000/update/${id}`, {
-      method: 'PATCH',
+ const fetchData = async () => {
+  try {
+    const response = await fetch(`http://localhost:5000/book/oneBook/${id}`, {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setUploadData(data.book);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+ const handleData = async(e)=>{
+  e.preventDefault();
+  try {
+    const response = await fetch(`http://localhost:5000/book/updateBook/${id}`,{
+      method:"PUT",
+      headers:{
+        "Content-Type":"application/json",
         "Authorization":`Bearer ${token}`
       },
-      body: JSON.stringify(updateBookObj),
-    }).then((res) => res.json())
-      .then((data) => {
-        toast.success("Book updated",{
-          duration:3000,
-          position:"top-right"
-        })
-      });
+      body:JSON.stringify(uploadData)
+    })
 
-  };
+    const data = await response.json();
+    console.log(data)
+      toast.success("Book added success vist shop page",{
+        duration:3000,
+        position:"top-right"
+      })
+      navigate("../")
+      setUploadData(data);
+    
 
-  useEffect(()=>{
-    const token = localStorage.getItem("jwt");
-    if(!token){
-      navigate("/signIn")
-    }
-  })
+  } catch (error) {
+    console.log(error)
+  }
+ }
+
+ useEffect(()=>{
+  if(!token){
+    navigate("/signIn")
+  }else{
+    fetchData();
+  } },[id])
 
   return (
     <div className="px-4 my-5 w-full">
-      <h2 className="mb-4 text-3xl font-bold">Edit Book</h2>
+      <h2 className="mb-4 text-3xl font-bold">Edit a Book</h2>
 
       <form
-        onSubmit={handleUpdate}
+        onSubmit={handleData}
         className="flex w-full gap-2 flex-col"
       >
         <div>
@@ -107,10 +114,10 @@ const EditBook = () => {
               <input
                 type="text"
                 id="bookTitle"
-                name="bookTitle"
+                name="bookTitle"  onChange={changevalue}
+                value={uploadData.bookTitle || " "}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Enter Book Title"
-                defaultValue={bookTitle}
               />
             </div>
 
@@ -121,10 +128,10 @@ const EditBook = () => {
               <input
                 type="text"
                 id="authorName"
-                name="authorName"
+                name="authorName"  onChange={changevalue}
+                value={uploadData.authorName || " "}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Enter Author Name"
-                defaultValue={authorName}
               />
             </div>
           </div>
@@ -137,10 +144,10 @@ const EditBook = () => {
               <input
                 type="text"
                 id="imageUrl"
-                name="imageUrl"
+                name="imageUrl"  onChange={changevalue}
+                value={uploadData.imageUrl || " "}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Enter Book Image Url"
-                defaultValue={imageUrl}
               />
             </div>
 
@@ -150,9 +157,7 @@ const EditBook = () => {
               </div>
               <select
                 name="category"
-                id="inputState"
-                value={selectedBookCategory}
-                onChange={handleChangeSelectedValue}
+                id="inputState" onChange={changevalue}
                 className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
                 {bookCategories.map((option) => (
@@ -172,11 +177,11 @@ const EditBook = () => {
           <textarea
             type="text"
             id="bookDescription"
-            name="bookDescription"
+            name="bookDescription"  onChange={changevalue}
+            value={uploadData.bookDescription || " "}
             className="w-full p-3 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
             placeholder="Write your Book Description"
             rows={4}
-            defaultValue={bookDescription}
           />
         </div>
 
@@ -187,22 +192,21 @@ const EditBook = () => {
           <input
             type="text"
             id="bookPdfUrl"
-            name="bookPdfUrl"
+            name="bookPdfUrl"  onChange={changevalue}
+            value={uploadData.bookPdfUrl || " "}
             className="w-full p-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
             placeholder="Enter Book PDF Url"
-            defaultValue={bookPdfUrl}
           />
         </div>
         <button
           type="submit"
           className="bg-blue-700 text-white py-2 px-4 rounded"
         >
-          Update Book
+          Edit Book
         </button>
       </form>
     </div>
   );
-}
+};
 
-export default EditBook
-
+export default UploadBook;

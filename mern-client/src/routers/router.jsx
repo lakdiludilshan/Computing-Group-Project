@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
 import App from "../App";
@@ -17,6 +16,7 @@ import EditBook from "../dashboard/EditBook";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Users from "../pages/Users";
+import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
@@ -50,8 +50,7 @@ const router = createBrowserRouter([
             
             {
                 path: "/book/:id",
-                element: <SingleBook/>,
-                loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+                element: <SingleBook/>
             },
         ]
     },

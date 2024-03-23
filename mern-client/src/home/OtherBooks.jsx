@@ -5,14 +5,26 @@ import BookCards from '../components/BookCards';
 const OtherBooks = () => {
     const [books, setBooks] = useState([]);
 
-    useEffect(() => {
-        fetch("http://localhost:5000/books/allBooks").then(res => res.json()).then(data => {
-          console.log("books fetched")
-          console.log(data)
-          setBooks(data.slice(4,8))
-        setBooks(data)
+    const fetchData = async()=>{
+      try {
+        const response = await fetch("http://localhost:5000/book/allBooks",{
+          method:"GET",
+          headers:{
+            "Content-Type":"application/json"
+          }
+        })
+
+        const data = await response.json();
+        if(data){
+          setBooks(data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
-        )
+
+    useEffect(()=>{
+      fetchData()
     },[])
   return (
     <div>

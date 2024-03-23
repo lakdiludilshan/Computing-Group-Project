@@ -107,5 +107,27 @@ const deleteBook = async(request,response)=>{
     }
 }
 
+const oneBook = async(request,response)=>{
+    const {id} = request.params;
+    try {
+        const findUser = await BookModel.findById(id)
+        if(findUser){
+            return response.status(200).json({
+                message:"Fetching book",
+                book:findUser
+            })
+        }else{
+            return response.status(404).json({
+                message:"book not found"
+            })
+        }
+    } catch (error) {
+        return response.status(500).json({
+            message:"Error",
+            error:error.message
+        })
+    }
+}
 
-module.exports = {addBook,getAllBooks,updateBooks,deleteBook}
+
+module.exports = {addBook,getAllBooks,updateBooks,deleteBook,oneBook}

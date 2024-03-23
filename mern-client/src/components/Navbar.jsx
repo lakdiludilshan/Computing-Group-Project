@@ -54,21 +54,21 @@ const Navbar = () => {
                     </Link>
 
                     {/* nav item for large devices */}
-                    <ul className='md:flex space-x-12 hidden'>
-                        {isAuthenticated && isAuthenticated? <div className='flex md:space-x-12'>
-                            <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Home</Link>
-                            <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Shop</Link>
-                            <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>About</Link>
-                            <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Sell Your Book</Link>
-                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Blog</Link>
-                            <Link  className='block text-base text-black uppercase cursor-pointer hover:text-blue-700' onClick={handleLogout}>LogOut</Link>
-                        </div>   :<div className='flex md:space-x-12'>
-                            <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Home</Link>
-                            <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Shop</Link>
-                            <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>About</Link>
-                            <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Sell Your Book</Link>
-                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>Blog</Link>
-                            <Link to="/signIn" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>SignIn</Link>
+                    <ul className='md:flex space-x-6 hidden'>
+                        {isAuthenticated && isAuthenticated? <div className='flex md:space-x-6 items-center justify-center'>
+                            <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Home</Link>
+                            <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Shop</Link>
+                            <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>About</Link>
+                            <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Sell Your Book</Link>
+                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Blog</Link>
+                            <Link  className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150' onClick={handleLogout}>LogOut</Link>
+                        </div>   :<div className='flex md:space-x-6'>
+                            <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Home</Link>
+                            <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Shop</Link>
+                            <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>About</Link>
+                            <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Sell Your Book</Link>
+                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Blog</Link>
+                            <Link to="/signIn" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>SignIn</Link>
                         </div>}
                     </ul>
 
@@ -89,12 +89,23 @@ const Navbar = () => {
 
                 {/* navitems for sm devices*/}
                 <div className={`space-y-4 px-4 mt-16 py-7 bg-blue-700 ${isMenuOpen ? "block fixed top-0 right-0 left-0 md:hidden" : "hidden"}`}>
-                    {
-                        isAuthenticated ?
-                            <Link to="/" className='block text-base text-white uppercase cursor-pointer hover:text-blue-700' onClick={handleLogout}>Logout</Link>
-                            :
-                            <Link to="/signIn" className='block text-base text-white uppercase cursor-pointer hover:text-blue-700'>SignIn</Link>
-                    }
+                <div className='flex justify-center items-center'>
+                {isAuthenticated && isAuthenticated? <div className='flex md:space-x-12 flex-column space-y-6'>
+                            <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Home</Link>
+                            <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Shop</Link>
+                            <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>About</Link>
+                            <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Sell Your Book</Link>
+                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Blog</Link>
+                            <Link  className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 ' onClick={handleLogout}>LogOut</Link>
+                        </div>   :<div className='flex md:space-x-12 flex-column space-y-6'>
+                            <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Home</Link>
+                            <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Shop</Link>
+                            <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>About</Link>
+                            <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Sell Your Book</Link>
+                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Blog</Link>
+                            <Link to="/signIn" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>SignIn</Link>
+                        </div>}
+                </div>
                 </div>
             </nav>
         </header>

@@ -10,32 +10,35 @@ const ManageBooks = () => {
     fetchBooks();
   }, [books])
 
+  const token = localStorage.getItem("jwt");
+
   const fetchBooks = async () => {
     fetch('http://localhost:5000/book/allBooks')
       .then(res => res.json())
       .then(data => setAllBooks(data))
   }
 
-  //delete book
-  const handleDelete = async(id) => {
-    console.log(id);
-    await fetch(`http://localhost:5000/delete/${id}`, {
-      method: 'DELETE',
-      headers:{
-        "Content-Type":"application/json",
-        "Authorization":`Bearer ${token}`
-      }
-    })
-    .then(res => res.json()) 
-    .then(data => {
-      alert("Book Deleted Successfully!!")
-      // setAllBooks(data);
-      fetchBooks();
-    })
-  }
+        //delete book
+        const handleDelete = async(id) => {
+          console.log(id);
+          await fetch(`http://localhost:5000/book/deleteBook/${id}`, {
+            method: 'DELETE',
+            headers:{
+              "Content-Type":"application/json",
+              "Authorization":`Bearer ${token}`
+            }
+          })
+          .then(res => res.json()) 
+          .then(data => {
+            alert("Book Deleted Successfully!!")
+            // setAllBooks(data);
+            fetchBooks();
+          })
+        }
+
 
   useEffect(()=>{
-    const token = localStorage.getItem("jwt");
+
     if(!token){
       toast.error("You need to sign in for access this page",{
         duration:3000,
@@ -43,6 +46,7 @@ const ManageBooks = () => {
       })
       navigate("/signIn")
     }
+
   })
 
   return (
