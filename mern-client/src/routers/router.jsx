@@ -17,6 +17,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Users from "../pages/Users";
 import { createBrowserRouter } from "react-router-dom";
+import Product from "../dashboard/Product";
 
 const router = createBrowserRouter([
     {
@@ -47,15 +48,16 @@ const router = createBrowserRouter([
                 path: "/signUp",
                 element: <SignUp/>,
             },
-            
             {
-                path: "/book/:id",
-                element: <SingleBook/>
-            },
+                path:"/book/:id",
+                element:<SingleBook/>,
+                loader: ({params}) => fetch(`http://localhost:5000/book/oneBook/${params.id}`)
+            }                            
+        
         ]
     },
     {
-        path: "admin/dashboard",
+        path: "/admin/dashboard",
         element: <DashboardLayout/>,
         children: [
             {
@@ -73,6 +75,10 @@ const router = createBrowserRouter([
             {
                 path: "/admin/dashboard/users",
                 element: <Users/>
+            },
+            {
+                path: "/admin/dashboard/product",
+                element: <Product/>
             },
             {
                 path: "/admin/dashboard/edit-book/:id",

@@ -4,9 +4,28 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/js/dist/dropdown'
 import 'bootstrap/js/dist/collapse'
 import '../css/sidebar.css'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import { useState,useEffect } from 'react';
 
 function SideBar() {
+    const [auth,setAuth]=useState(false)
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        const token = localStorage.getItem("jwt")
+        if(token){
+            setAuth(true)
+        }else{
+            setAuth(false)
+        }
+    },[])
+
+    const logOut = ()=>{
+        localStorage.removeItem("jwt");
+        navigate("/signIn");
+    }
+
     return (
         <div className='w-full '>
             <div className='row'>
@@ -16,7 +35,7 @@ function SideBar() {
                             <span className='f5-4'>Admin Dashboard</span>
                         </a>
                         <hr className='text-white d-none d-sm-block'></hr>
-                        <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id='parentM'>
+                        {auth &&auth? <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id='parentM'>
                             <li class="nav-item my-1 py-2 py-sm-0">
                                 <a href="/admin/dashboard" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-speedometer2'></i>
@@ -50,10 +69,56 @@ function SideBar() {
                             </li>
 
                             <li class="nav-item my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                <Link to={"product"} class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-grid'></i>
                                     <span className='ms-2 d-none d-sm-inline'>Product</span>
+                                </Link>
+                            </li>
+
+                            <li class="nav-item my-1 py-2 py-sm-0">
+                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-backspace-fill'></i>
+                                    <span className='ms-2 d-none d-sm-inline' onClick={logOut}>Log Out</span>
                                 </a>
+                            </li>
+                        </ul>  : <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id='parentM'>
+                            <li class="nav-item my-1 py-2 py-sm-0">
+                                <a href="/admin/dashboard" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-speedometer2'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item my-1 py-2 py-sm-0">
+                                <a href="/admin/dashboard/upload" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-book'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Upload Book</span>
+                                </a>
+                            </li>
+                            <li class="nav-item my-1 py-2 py-sm-0">
+                                <a href="/" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-book'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Home</span>
+                                </a>
+                            </li>
+                            <li class="nav-item my-1 py-2 py-sm-0">
+                                 <a href="/admin/dashboard/manage" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-files'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Manage Books</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item my-1 py-2 py-sm-0">
+                                <Link to={"users"} href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-people'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Users</span>
+                                </Link>
+                            </li>
+
+                            <li class="nav-item my-1 py-2 py-sm-0">
+                                <Link to={"product"} class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                    <i className='bi bi-grid'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Product</span>
+                                </Link>
                             </li>
 
                             <li class="nav-item my-1 py-2 py-sm-0">
@@ -62,13 +127,8 @@ function SideBar() {
                                     <span className='ms-2 d-none d-sm-inline'>Sign in</span>
                                 </a>
                             </li>
-                            <li class="nav-item my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
-                                    <i className='bi bi-backspace-fill'></i>
-                                    <span className='ms-2 d-none d-sm-inline'>Log Out</span>
-                                </a>
-                            </li>
-                        </ul>
+
+                        </ul>}
                         
                     </div>
                     <div className="dropdown open">

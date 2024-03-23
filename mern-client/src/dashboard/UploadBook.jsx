@@ -64,6 +64,7 @@ const UploadBook = () => {
         duration:3000,
         position:"top-right"
       })
+      navigate("../")
       setUploadData(data);
     
 

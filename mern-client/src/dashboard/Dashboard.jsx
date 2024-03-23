@@ -57,24 +57,7 @@ const navigate = useNavigate()
         </div>
       </div>
     </div>
-    <div className="w-full border">
-<div className="w-[90%] border flex justify-center items-center m-20">
-    <div className="grid grid-cols-4 gap-5 ">
-      <div className="border px-5 py-8 rounded-lg shadow-lg bg-blue-800 text-white">
-        fd
-      </div>
-      <div className="border px-5 py-8 rounded-lg shadow-lg  bg-blue-800 text-white">
-        fd
-      </div>
-      <div className="border px-5 py-8 rounded-lg shadow-lg  bg-blue-800 text-white">
-        fd
-      </div>
-      <div className="border px-5 py-8 rounded-lg shadow-lg  bg-blue-800 text-white">
-        fd
-      </div>
-    </div>
-</div>
-    </div>
+
     </>
   );
 };

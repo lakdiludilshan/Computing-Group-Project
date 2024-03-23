@@ -48,7 +48,7 @@ const BookCards = ({headline, books}) => {
       >
         {
             books.books?.map(book => (
-                <SwiperSlide key={book._id}>
+                <SwiperSlide >
                     <Link to={`/book/${book._id}`}>
                         <div className='relative'>
                             <img src={book.imageUrl} alt=''/>
