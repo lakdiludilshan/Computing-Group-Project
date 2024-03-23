@@ -35,6 +35,7 @@ export default function Shop() {
   const tokenVerify = () => {
     if (token) {
       alert('Book added');
+      window.location.href = 'https://www.paypal.com/us/signin';
     } else {
       navigate('/signIn');
     }

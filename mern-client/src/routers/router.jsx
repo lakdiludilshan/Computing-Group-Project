@@ -7,7 +7,7 @@ import Home from "../home/home";
 import Shop from "../shop/shop";
 import About from "../components/About";
 import Blog from "../components/Blog";
-import SingleBook from "../shop/SingleBook";
+import SingleBook from "../components/SingleBook";
 import DashboardLayout from "../dashboard/DashboardLayout";
 import Dashboard from "../dashboard/Dashboard";
 import UploadBook from "../dashboard/UploadBook";
