@@ -17,49 +17,38 @@ function SideBar() {
                         <hr className='text-white d-none d-sm-block'></hr>
                         <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id='parentM'>
                             <li class="nav-item my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                <a href="/admin/dashboard" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-speedometer2'></i>
                                     <span className='ms-2 d-none d-sm-inline'>Dashboard</span>
                                 </a>
                             </li>
                             <li class="nav-item my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                <a href="/admin/dashboard/upload" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-book'></i>
                                     <span className='ms-2 d-none d-sm-inline'>Upload Book</span>
                                 </a>
                             </li>
                             <li class="nav-item my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
+                                 <a href="/admin/dashboard/manage" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-files'></i>
                                     <span className='ms-2 d-none d-sm-inline'>Manage Books</span>
                                 </a>
                             </li>
+
                             <li class="nav-item my-1 py-2 py-sm-0">
                                 <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-people'></i>
                                     <span className='ms-2 d-none d-sm-inline'>Users</span>
                                 </a>
                             </li>
+
                             <li class="nav-item my-1 py-2 py-sm-0">
-                                <a href="#submenu" class="nav-link text-white text-center text-sm-start" data-bs-toggle="collapse" aria-current="page">
+                                <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-grid'></i>
-                                    <span className='ms-2 d-none d-sm-inline'>Products</span>
-                                    <i className='bi bi-arrow-down-short ms-2'></i>
+                                    <span className='ms-2 d-none d-sm-inline'>Product</span>
                                 </a>
-                                <ul class="nav collapse ms-2 flex-column" id='submenu' data-bs-parent="#parentM">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white" href="#" aria-current="page">
-                                            <span className='d-none d-sm-inline'>Item </span>1
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white" href="#">
-                                        <span className='d-none d-sm-inline'>Item </span>2
-                                        </a>
-                                    </li>
-                                </ul>
-                                
                             </li>
+
                             <li class="nav-item my-1 py-2 py-sm-0">
                                 <a href="#" class="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className='bi bi-arrow-right'></i>
