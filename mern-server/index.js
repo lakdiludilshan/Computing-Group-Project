@@ -6,7 +6,7 @@ require("dotenv").config();
 
 
 const userRouter = require("./routes/UserRoutes");
-const UserModel = require("./model/UserModel");
+const bookRouter = require("./routes/BookRoutes")
 
 // Middleware
 app.use(cors());
@@ -112,6 +112,7 @@ app.get('/', (req, res) => {
 
 
 app.use(userRouter)
+app.use(bookRouter)
 
 
 
