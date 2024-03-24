@@ -41,7 +41,7 @@ a{
     justify-content: flex-start;
     flex-direction: column;
     color: white;
-    margin: 1rem;
+    margin: 0.5rem;
     width: 150px;
 }
 
@@ -93,7 +93,7 @@ hr{
 }
 
 .sb_footer-copyright p{
-    font-size: 13px;
+    font-size: 17px;
     line-height: 15px;
     color: rgb(255,255,255);
     font-weight: 600;

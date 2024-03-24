@@ -8,6 +8,7 @@ const Navbar = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
+    const [search, setSearch] = useState('');
 
     // toggle menu
     const toggleMenu = () => {
@@ -60,14 +61,12 @@ const Navbar = () => {
                             <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Shop</Link>
                             <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>About</Link>
                             <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Sell Your Book</Link>
-                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Blog</Link>
                             <Link  className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150' onClick={handleLogout}>LogOut</Link>
                         </div>   :<div className='flex md:space-x-6'>
                             <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Home</Link>
                             <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Shop</Link>
                             <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>About</Link>
                             <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Sell Your Book</Link>
-                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>Blog</Link>
                             <Link to="/signIn" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700  px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150'>SignIn</Link>
                         </div>}
                     </ul>
@@ -95,17 +94,24 @@ const Navbar = () => {
                             <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Shop</Link>
                             <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>About</Link>
                             <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Sell Your Book</Link>
-                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Blog</Link>
                             <Link  className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 ' onClick={handleLogout}>LogOut</Link>
                         </div>   :<div className='flex md:space-x-12 flex-column space-y-6'>
                             <Link to="/" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Home</Link>
                             <Link to="/shop" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Shop</Link>
                             <Link to="/about" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>About</Link>
                             <Link to="/admin/dashboard" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Sell Your Book</Link>
-                            <Link to="/blog" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>Blog</Link>
                             <Link to="/signIn" className='block text-base text-black uppercase cursor-pointer hover:text-blue-700 px-4 py-2 rounded-lg hover:bg-red-300 hover:ease-in hover:duration-150 '>SignIn</Link>
                         </div>}
                 </div>
+                </div>
+                {/* search bar */}
+                <div className='flex items-center justify-between w-[60%] mx-auto gap-2'>
+                    <input type="text" placeholder='Search for books' className='flex-1 px-4 py-2 rounded-lg focus:outline-none border border-black' onChange={
+                        (e)=>setSearch(e.target.value)
+                    }/>
+                    <button className='bg-blue-700 text-white px-4 py-2 border-black rounded-lg' onClick={
+                        ()=>navigate(`/shop?q=${search}`)
+                    }>Search</button>
                 </div>
             </nav>
         </header>

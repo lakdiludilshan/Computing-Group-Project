@@ -40,7 +40,7 @@ const Users = () => {
         fetchData()
     },[])
   return (
-    <div >
+    <div className='pt-5'>
               <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {userData.users?.map((person) => (
             <li className=' shadow-lg flex justify-center items-center rounded-lg' key={person._id}>

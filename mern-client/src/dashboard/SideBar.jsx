@@ -140,7 +140,7 @@ function SideBar() {
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            <i className='bi bi-person f5-4'></i><span className='f5-4 ms-3'>Dropdown</span>
+                            <i className='bi bi-person f5-4'></i><span className='f5-4 ms-3'>More Settings</span>
                         </a>
                         <div className="dropdown-menu" aria-labelledby="triggerId">
                             <a className="dropdown-item" href="#">Profile</a>

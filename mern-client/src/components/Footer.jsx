@@ -10,41 +10,28 @@ const Footer = () => {
       <div className='sb_footer section_padding'>
         <div className='sb_footer-links'>
           <div className='sb_footer-links-div'>
-            <h4>For business</h4>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
+            <h4>About BestBooks</h4>
+            <a href="/about"><p>About Us</p></a>
+            <a href="#"><p>Terms & Conditions</p></a>
+            <a href="#"><p>Privacy Policies</p></a>
+            <a href="#"><p>Sitemap</p></a>
           </div>
           <div className='sb_footer-links-div'>
-            <h4>For business</h4>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
+            <h4>Help & Support</h4>
+            <a href="#"><p>FAQ</p></a>
+            <a href="/about"><p>Contact Us</p></a>
           </div>
           <div className='sb_footer-links-div'>
-            <h4>For business</h4>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-          </div>
-          <div className='sb_footer-links-div'>
-            <h4>For business</h4>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
-            <a href="#"><p>Employer</p></a>
+            <h4>Download Our App</h4>
+            <a href="https://play.google.com/store/games?device=windows"><p>Google Play</p></a>
+            <a href="https://www.apple.com/app-store/" ><p>App Store</p></a>
           </div>
           <div className='socialmedia'>
             <h4 className=''>Follow Us On</h4>
             <p><img src={fb} alt="" className='logo'/></p>
-            <p><img src={twitter} alt="" className='logo'/></p>
             <p><img src={linkedin} alt="" className='logo'/></p>
           </div>
         </div>
-        
           <hr></hr>
         <div className='sb_footer-below'>
           <div className='sb_footer-copyright'>

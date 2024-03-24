@@ -6,7 +6,6 @@ import App from "../App";
 import Home from "../home/home";
 import Shop from "../shop/shop";
 import About from "../components/About";
-import Blog from "../components/Blog";
 import SingleBook from "../components/SingleBook";
 import DashboardLayout from "../dashboard/DashboardLayout";
 import Dashboard from "../dashboard/Dashboard";
@@ -35,10 +34,6 @@ const router = createBrowserRouter([
             {
                 path: "/about",
                 element: <About/>,
-            },
-            {
-                path: "/blog",
-                element: <Blog/>,
             },
             {
                 path: "/signIn",
